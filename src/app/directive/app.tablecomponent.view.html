@@ -1,0 +1,14 @@
+<table class="table table-bordered table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th *ngFor="let h of headers">{{h}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of DataSource">
+      <td *ngFor="let h of headers" (click)="rowClick(record)">
+        {{record[h]}}
+      </td>
+    </tr>
+  </tbody>
+</table>
