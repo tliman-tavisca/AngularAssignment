@@ -15,7 +15,7 @@ export class MytripsComponent implements OnInit {
   private tripService: TripsService;
   currentUser: User;
   constructor(private authenticationService: AuthenticationService) {
-    this.trip = new Trip(0, '', '', '', '', '', 0);
+    this.trip = new Trip(0, '', '', '', '', '', 0, '');
     this.trips = new Array<Trip>();
     this.tripService = new TripsService();
     this.currentUser = this.authenticationService.currentUserValue;

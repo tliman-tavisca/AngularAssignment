@@ -1,0 +1,37 @@
+.flight-container{
+    align-self: center;
+    background: white;
+  }
+  .flight-content {
+    align-self: center;
+    background: white;
+    margin-left: 1rem;
+  }
+  .flight-content input, select {
+    max-width: 300px;
+    background: white;
+    margin-left: 1rem;
+  }
+  .alert.alert-danger  {
+    max-width: 300px;
+    margin: 0.5rem 0;
+  }
+  .column  {
+      margin: 1rem;
+  }
+  .searchButton {
+      margin-left: 1rem;
+  }
+  .card {
+    margin: 8px 16px 8px 0;
+  }
+
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .product-container .product {
+    flex: 1 0 33%;
+    height: 50px;
+    border: 1px solid black;
+  }

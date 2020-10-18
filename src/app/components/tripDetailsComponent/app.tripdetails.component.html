@@ -1,18 +1,27 @@
 <div class="content">
-  <h2>Details</h2>
-  <ul class="container">
-    <li>Product Id: {{ details.ProductId }}</li>
 
-    <li>Product Name: {{ details.ProductName }}</li>
+  <div class="card">
+    <h3 style="margin-top: 1rem;">Details</h3>
+    <div class="row">
+      <div class="column">
+        <img src={{this.imageUrl}} alt="Itenary" style="max-width:400px">
+      </div>
+      <div class="column">
+        <p> <b>Product Id:</b> {{ details.ProductId }}</p>
 
-    <li>Category Name: {{ details.CategoryName }}</li>
+        <p><b>Product Name: </b>{{ details.ProductName }}</p>
 
-    <li>Supplier Name: {{ details.Supplier }}</li>
+        <p><b>Category:</b> <span [outerHTML]="details.CategoryName | producttype"></span> </p>
 
-    <li>Description: {{ details.Description }}</li>
+        <p><b>Supplier Name:</b> {{ details.Supplier }}</p>
 
-    <li>BasePrice: {{ details.BasePrice }}</li>
-  </ul>
+        <p><b>Description:</b> {{ details.Description }}</p>
 
-  <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+        <p><b>BasePrice:</b> {{ details.BasePrice | currency }} </p>
+        <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+        <button class="btn btn-primary pull-right" (click)="showDialog()">Cancel Trip</button>
+      </div>
+    </div>
+  </div>
+  <confirm-dialog></confirm-dialog>
 </div>

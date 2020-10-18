@@ -21,7 +21,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const { url, method, headers, body } = request;
 
-    // wrap in delayed observable to simulate server api call
     return of(null)
       .pipe(mergeMap(handleRoute))
       .pipe(materialize()) // call materialize and dematerialize to ensure delay even if an error is thrown (https://github.com/Reactive-Extensions/RxJS/issues/648)
@@ -39,12 +38,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         case url.match(/\/users\/\d+$/) && method === 'DELETE':
           return deleteUser();
         default:
-          // pass through any requests not handled above
           return next.handle(request);
       }
     }
-
-    // route functions
 
     function authenticate() {
       const { username, password } = body;
@@ -87,8 +83,6 @@ export class FakeBackendInterceptor implements HttpInterceptor {
       localStorage.setItem('users', JSON.stringify(users));
       return ok();
     }
-
-    // helper functions
 
     function ok(body?) {
       return of(new HttpResponse({ status: 200, body }));

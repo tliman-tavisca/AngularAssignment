@@ -1,0 +1,47 @@
+<div class="flight-container">
+    <div class="flight-content">
+        <app-flight [model]="model" (changeName)="onchangeName()">
+        </app-flight>
+        <div class="w3-twothird display-w3-twothird">
+            <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <div class="display-border">
+                    <span *ngIf="toOrginCity.length >0 && fromDestCity.length >0">
+                        <h3 class="display-msgpsan">{{toOrginCity}} --> {{fromDestCity}} --> {{destination2}}</h3>
+                    </span>
+                    <span *ngIf="toOrginCity.length  == 0 && fromDestCity.length == 0">
+                        <h3 class="display-msgpsan">All the flights are listed</h3>
+                    </span>
+                </div>
+                <div class="card-container">
+                    <div *ngFor="let i of flightData" class="">
+                        <div class="card" style="max-width: inherit;">
+                            <div class="row">
+                                <div class="column" style="max-width: 400px;"><img class="card-img-top"
+                                        src="../../../../assets/flights.jpg" alt="Card image"></div>
+                                <div class="column">
+                                    <div class="row">
+                                        <div class="column">
+                                            Flight Number: {{i.SeatNo1}} <br>
+                                            Journy: {{i.Origin1}} to {{i.Destination1}} <br>
+                                            Depart: {{i.ArrivalDate1 | date}} <br> Arrival: {{i.DepartureDate1 | date}}
+                                        </div>
+                                        <div class="column">
+                                            Flight Number:{{i.SeatNo2}} <br>
+                                            Journy: {{i.Origin2}} to {{i.Destination2}} <br>
+                                            Depart: {{i.ArrivalDate2 | date}} <br> Arrival: {{i.DepartureDate2 | date}}
+                                        </div>
+                                        <div class="column"><span class="displayprice-span">Total Cost:
+                                                {{i.DisplayedPrice | currency}}</span><br><br>
+                                            <button class="btn btn-success">Book this Flight</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
 import { Observable, of } from 'rxjs';
-
 import { Trip } from './../model/app.trip.model';
 
 @Injectable({ providedIn: 'root' })
@@ -20,8 +18,9 @@ export class TripsService {
         'Flight',
         'Flight',
         'Delta Airlines',
-        'Date: 23-Dec-2020',
-        120000
+        'This trip is booked on Date: 3-Dec-2020, 1 Passenger, Round Trip',
+        120000,
+        'Confirmed'
       )
     );
     this.trips.push(
@@ -31,12 +30,16 @@ export class TripsService {
         'Hotel',
         'Hotel',
         'Novatel',
-        'Date: 3-Dec-2020',
-        3000
+        'This trip is booked on Date: 3-Dec-2020, 1 Passenger, Round Trip',
+        3000,
+        'Confirmed'
       )
     );
     this.trips.push(
-      new Trip(3, 'Trp003', 'Car', 'Car', 'Uber', 'Date: 15-Dec-2020', 10)
+      new Trip(3, 'Trp003', 'Car', 'Car', 'Uber', 'This trip is booked on Date: 3-Dec-2020, 1 Passenger, Round Trip', 10, 'Cancelled')
+    );
+    this.trips.push(
+      new Trip(4, 'Trp004', 'Activity', 'Activity', 'Uber', 'This trip is booked on Date: 26-Dec-2020, 1 Passenger, Round Trip', 10, 'Cancelled')
     );
     return of(this.trips);
   }

@@ -1,0 +1,65 @@
+<div class="flight-container">
+	<div class="margin-todiv">
+		<form (ngSubmit)="f.form.valid && serachfn()" #f="ngForm">
+			<div class="row">
+				<div class="column">
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !originCity.valid }">
+						<input placeholder="Enter origin City" type="text"
+							class=" inputfield form-control input-underline input-lg" id="user" name="originCity"
+							[(ngModel)]="model.originCity" #originCity="ngModel" required />
+						<div *ngIf="f.submitted && !originCity.valid" class="alert alert-danger">origin City is
+							required
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted &&!destCity.valid }">
+						<input placeholder="Enter Destination City" type="text"
+							class="form-control input-underline input-lg inputfield" id="user" name="destCity"
+							[(ngModel)]="model.destCity" #destCity="ngModel" required />
+						<div *ngIf="f.submitted && !destCity.valid" class="alert alert-danger">Destination City is
+							required
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateArrival.valid }">
+						<input placeholder="Arrival date" type="date"
+							class="inputfield form-control input-underline input-lg" id="user" name="dateArrival"
+							[(ngModel)]="model.dateArrival" #dateArrival="ngModel" required />
+						<div *ngIf="f.submitted && !dateArrival.valid" class="alert alert-danger">Arrival Date is
+							required</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateDepature.valid }">
+						<input placeholder="Departure date" type="date"
+							class="inputfield form-control input-underline input-lg" id="user" name="dateDepature"
+							[(ngModel)]="model.dateDepature" #dateDepature="ngModel" required />
+						<div *ngIf="f.submitted && !dateDepature.valid" class="alert alert-danger">Departure date is
+							required
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !passenger.valid }">
+					<select name="passenger" placeholder="passenger" [(ngModel)]="model.passenger" #passenger="ngModel"
+						class=" inputfield form-control input-lg" required>
+						<option [ngValue]="undefined" disabled selected> Please select Pessanger </option>
+						<option>Economy</option>
+						<option>Bussiness</option>
+					</select>
+					<div *ngIf="f.submitted && !passenger.valid" class="alert alert-danger">Departure date is
+						required</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<button class="btn btn-primary searchButton">Search</button>
+			</div>
+		</form>
+	</div>
+	<br>
+	<br>
+</div>

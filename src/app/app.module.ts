@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Injector } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { appRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,12 @@ import { AlertComponent } from './components/alertComponent/app.alert.component'
 import { fakeBackendProvider } from './infrastructure/fake-backend';
 import { JwtTokenInterceptor } from './infrastructure/jwtToken.interceptor';
 import { ErrorInterceptor } from './infrastructure/error.interceptor';
+import { ProductTypePipe } from './pipes/app.ProductTypePipe';
+
+import { ConfirmDialogModule } from './confirm-dialog.module';
+import { FlightComponent } from './components/searchComponent/flight/app.flightsearch.component'
+import { FlightService } from './services/flight.service';
+import { FlightResultsComponent } from './components/searchComponent/flight/app.flightresultcomponent'
 
 @NgModule({
   declarations: [
@@ -24,12 +32,18 @@ import { ErrorInterceptor } from './infrastructure/error.interceptor';
     LoginComponent,
     RegisterComponent,
     AlertComponent,
+    ProductTypePipe,
+    FlightComponent,
+    FlightResultsComponent
   ],
   imports: [
     BrowserModule,
     appRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule,
+    ConfirmDialogModule,
+    FormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
@@ -37,7 +51,10 @@ import { ErrorInterceptor } from './infrastructure/error.interceptor';
 
     // provider used to create fake backend
     fakeBackendProvider,
+    FlightService
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule {
+}

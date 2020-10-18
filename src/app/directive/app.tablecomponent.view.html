@@ -7,7 +7,11 @@
   <tbody>
     <tr *ngFor="let record of DataSource">
       <td *ngFor="let h of headers" (click)="rowClick(record)">
-        {{record[h]}}
+        <span *ngIf='h==="CategoryName"; else elseIfBlock'><span [outerHTML]="record[h] | producttype"></span></span>
+        <ng-template #elseIfBlock>
+          <ng-container *ngIf='h==="BasePrice"; else elseBlock'>{{record[h] | currency }}</ng-container>
+        </ng-template>
+        <ng-template #elseBlock>{{record[h]}}</ng-template>
       </td>
     </tr>
   </tbody>

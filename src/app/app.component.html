@@ -1,18 +1,14 @@
 <!-- nav -->
 <nav class="navbar navbar-expand bg-light" *ngIf="currentUser">
   <div class="navbar-nav">
-    <img
-      width="120"
-      alt="Company Logo"
-      src="../assets/images/cx_loyalty_logo.png"
-    />
+    <img width="120" alt="Company Logo" src="../assets/images/cx_loyalty_logo.png" />
     <a class="nav-item nav-link" routerLink="/mytrips">MyTrips</a>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
 
 <!-- main app container -->
-<div class="jumbotron">
+<div class="jumbotron main-Container">
   <div class="container">
     <div class="">
       <alert></alert>

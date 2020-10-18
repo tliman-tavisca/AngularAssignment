@@ -85,7 +85,7 @@ svg.material-icons:not(:last-child) {
   background-color: #fafafa;
   height: 40px;
   width: 200px;
-  margin: 0 8px 16px;
+  margin: 16px 16px;
   padding: 16px;
   display: flex;
   flex-direction: row;
@@ -96,7 +96,7 @@ svg.material-icons:not(:last-child) {
 }
 
 .card-container .card:not(:last-child) {
-  margin-right: 0;
+  margin-right: 16px;
 }
 
 .card.card-small {
@@ -285,3 +285,7 @@ svg#clouds {
     visibility: hidden;
   }
 }
+.main-Container{
+  padding-top: 2rem;
+}
+

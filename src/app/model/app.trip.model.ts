@@ -6,6 +6,7 @@ export class Trip {
     public CategoryName: string,
     public Supplier: string,
     public Description: string,
-    public BasePrice: number
-  ) {}
+    public BasePrice: number,
+    public Status: string
+  ) { }
 }
