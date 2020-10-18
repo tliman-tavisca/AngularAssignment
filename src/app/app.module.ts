@@ -16,11 +16,11 @@ import { AlertComponent } from './components/alertComponent/app.alert.component'
 import { fakeBackendProvider } from './infrastructure/fake-backend';
 import { JwtTokenInterceptor } from './infrastructure/jwtToken.interceptor';
 import { ErrorInterceptor } from './infrastructure/error.interceptor';
-import { ProductTypePipe } from './pipes/app.ProductTypePipe';
+import { ProductTypePipe } from './pipes/app.producttypepipe';
 
 import { ConfirmDialogModule } from './confirm-dialog.module';
 import { FlightComponent } from './components/searchComponent/flight/app.flightsearch.component'
-import { FlightService } from './services/flight.service';
+import { FlightService } from './services/app.flight.service';
 import { FlightResultsComponent } from './components/searchComponent/flight/app.flightresultcomponent'
 
 @NgModule({

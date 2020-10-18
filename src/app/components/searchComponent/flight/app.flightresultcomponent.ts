@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { FlightService } from '../../../services/flight.service'
+import { FlightService } from '../../../services/app.flight.service'
 
 @Component({
     selector: 'app-flightresult',
