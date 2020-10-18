@@ -10,7 +10,10 @@ export class TripsService {
     this.trips = new Array<Trip>();
   }
 
-  getTrips(): Observable<Trip[]> {
+  getTripsData(): Observable<Trip[]> {
+    let resp: Observable<Trip[]> = null;
+
+
     this.trips.push(
       new Trip(
         1,
@@ -41,24 +44,26 @@ export class TripsService {
     this.trips.push(
       new Trip(4, 'Trp004', 'Activity', 'Activity', 'Uber', 'This trip is booked on Date: 26-Dec-2020, 1 Passenger, Round Trip', 10, 'Cancelled')
     );
-    return of(this.trips);
+    resp = of(this.trips);
+    return resp;
+    //return of(this.trips);
   }
 
   addTrip(trp: Trip): Observable<Trip[]> {
-    this.getTrips();
+    this.getTripsData();
     this.trips.push(trp);
     return of(this.trips);
   }
 
   removeTrip(tripID: number): Observable<Array<Trip>> {
-    this.getTrips();
-    let productIndex = this.trips.findIndex((x) => x.TripId === tripID);
-    this.trips.splice(productIndex);
+    this.getTripsData();
+    let tripIndex = this.trips.findIndex((x) => x.TripId === tripID);
+    this.trips.splice(tripIndex);
     return of(this.trips);
   }
 
   getTripDetails(tripID: number): Observable<Trip> {
-    this.getTrips();
+    this.getTripsData();
     return of(this.trips.find((x) => x.TripId === tripID));
   }
 }

@@ -23,6 +23,18 @@ import { FlightComponent } from './components/searchComponent/flight/app.flights
 import { FlightService } from './services/app.flight.service';
 import { FlightResultsComponent } from './components/searchComponent/flight/app.flightresultcomponent'
 
+// importing the StoreModule
+import { StoreModule } from '@ngrx/store';
+// import mainReducres
+import { mainReducers } from './reducers/app.reducers';
+// EffectModule for all Async Operations
+import { EffectsModule } from '@ngrx/effects';
+// TripsEffects containing all Async operations
+import { TripsEffects } from './effects/app.trip.effect';
+// StoreDevtoolsModule, provide the simulation of NGRX Store
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment.prod';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +51,24 @@ import { FlightResultsComponent } from './components/searchComponent/flight/app.
   imports: [
     BrowserModule,
     appRoutingModule,
+    // importing the StoreModule for the application
+    // provide the store for the application
+    // so that all components will be able to read/write data in store
+    // the store will be managed by 'mainReducers' object
+    StoreModule.forRoot(mainReducers),
+    // All Async operations are initialized at app level
+    // using EffectsModule
+    EffectsModule.forRoot([TripsEffects]),
+    appRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
     ConfirmDialogModule,
-    FormsModule
+    FormsModule,
+    StoreDevtoolsModule.instrument({
+      name: 'My NgRx App',
+      logOnly: environment.production
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
