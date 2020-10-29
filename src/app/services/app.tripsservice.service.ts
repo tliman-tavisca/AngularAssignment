@@ -46,7 +46,6 @@ export class TripsService {
     );
     resp = of(this.trips);
     return resp;
-    //return of(this.trips);
   }
 
   addTrip(trp: Trip): Observable<Trip[]> {

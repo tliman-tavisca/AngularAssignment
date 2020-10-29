@@ -1,16 +1,13 @@
-// the factory function
-// the 'props' is an extra metadata
 import { createAction, props } from '@ngrx/store';
-import { Trip } from '../model/app.trip.model';
+import { Trip } from '../../model/app.trip.model';
 
-// the new action creation syntax
 export const getTrips = createAction(
     '[Trip] Get Trip'
 );
-// success action
+
 export const getTripsSuccess = createAction(
-    '[Trip] Get Trip Success', // acction type
-    props<{ trips: Trip[] }>() // payload (input and/or output parameter )
+    '[Trip] Get Trip Success',
+    props<{ trips: Trip[] }>()
 );
 export const getTripById = createAction(
     '[Trip]Get Trip By Id',
@@ -44,4 +41,3 @@ export const deleteTripSuccess = createAction(
     '[Trip] Delete Trip Success',
     props<{ trips: Trip[] }>()
 );
-// ends here

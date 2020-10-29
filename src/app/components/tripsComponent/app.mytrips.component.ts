@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Trip } from './../../model/app.trip.model';
 import { User } from '../../model/app.user.model';
 import { AuthenticationService } from '../../services/app.authentication.service';
-import { TripActions } from './../../actions/index';
+import { TripActions } from './../../dataStore/actions/index';
 import { Store, select } from '@ngrx/store';
-import { IAppTripState } from '../../state/app.state';
-import { selectTripsList } from '../../selectors/app.trip.selector';
+import { IAppTripState } from '../../dataStore/state/app.state';
+import { selectTripsList } from '../../dataStore/selectors/app.trip.selector';
 
 @Component({
   selector: 'app-mytrips',
@@ -24,7 +24,6 @@ export class MytripsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.tripService.getTrips().subscribe((trips) => (this.trips = trips));
     this._store.dispatch(TripActions.getTrips());
   }
 }
