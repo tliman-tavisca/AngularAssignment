@@ -7,9 +7,13 @@
         <img src={{this.imageUrl}} alt="Itenary" style="max-width:400px">
       </div>
       <div class="column">
-        <p> <b>Product Id:</b> {{ details.ProductId }}</p>
+        <p style="font-weight: 600; font-size: larger;">
+          <b>Status: </b>
+          <span [innerHTML]="details.Status | status"></span>
+        </p>
+        <p> <b>Product Id: </b> <span [innerHTML]="details.ProductId"> </span></p>
 
-        <p><b>Product Name: </b>{{ details.ProductName }}</p>
+        <p><b>Product Name: </b><span>{{ details.ProductName }} </span></p>
 
         <p><b>Category:</b> <span [outerHTML]="details.CategoryName | producttype"></span> </p>
 
@@ -18,8 +22,11 @@
         <p><b>Description:</b> {{ details.Description }}</p>
 
         <p><b>BasePrice:</b> {{ details.BasePrice | currency }} </p>
+
+        <p><b>BookDate:</b> {{ details.BookDate }}</p>
         <button class="btn btn-primary" (click)="goBack()">Go Back</button>
-        <button class="btn btn-primary pull-right" (click)="showDialog()">Cancel Trip</button>
+        <button class="btn btn-primary pull-right" *ngIf='details.Status=="Confirmed"' (click)="showDialog()">Cancel
+          Trip</button>
       </div>
     </div>
   </div>

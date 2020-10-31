@@ -7,6 +7,7 @@ export class Trip {
     public Supplier: string,
     public Description: string,
     public BasePrice: number,
-    public Status: string
+    public Status: string,
+    public BookDate: string
   ) { }
 }

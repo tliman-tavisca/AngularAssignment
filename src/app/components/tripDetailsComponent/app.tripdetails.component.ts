@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Trip } from 'src/app/model/app.trip.model';
-import { TripsService } from './../../services/app.tripsservice.service';
 import { ConfirmDialogService } from '../../services/app.dialog.service';
-import { ConfirmDialogModule } from './../../confirm-dialog.module';
+import { TripActions } from './../../dataStore/actions/index';
+import { Store, select } from '@ngrx/store';
+import { IAppTripState } from '../../dataStore/state/app.state';
+import { AlertService } from '../../services/app.alert.service';
+import { selectTrip } from '../../dataStore/selectors/app.trip.selector';
 
 @Component({
   selector: 'app-trip-details',
@@ -14,9 +17,13 @@ import { ConfirmDialogModule } from './../../confirm-dialog.module';
 export class TripDetailsComponent implements OnInit {
   details: Trip;
   imageUrl: string;
-  private tripService: TripsService;
-  constructor(private route: ActivatedRoute, private location: Location, private confirmDialogService: ConfirmDialogService) {
-    this.tripService = new TripsService();
+  trip$ = this._store.pipe(select(selectTrip));
+
+  constructor(private route: ActivatedRoute,
+    private location: Location,
+    private confirmDialogService: ConfirmDialogService,
+    private _store: Store<IAppTripState>,
+    private alertService: AlertService) {
   }
 
   ngOnInit(): void {
@@ -25,12 +32,11 @@ export class TripDetailsComponent implements OnInit {
 
   getDetails(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.tripService
-      .getTripDetails(id)
-      .subscribe((details) => {
-        this.details = details;
-        this.getImageUrl();
-      });
+    this._store.dispatch(TripActions.getTripById({ payload: id }));
+    this._store.pipe(select(selectTrip)).subscribe((details) => {
+      this.details = details;
+      this.getImageUrl();
+    });;
   }
 
   goBack(): void {
@@ -59,9 +65,14 @@ export class TripDetailsComponent implements OnInit {
   }
 
   showDialog() {
-    this.confirmDialogService.confirmThis("Are you sure to Cancel this Trip?", function () {
-      alert("Yes clicked");
-    }, function () {
-    })
+    this.confirmDialogService.confirmThis("Are you sure to Cancel this Trip?",
+      () => this.cancelTrip(),
+      function () { })
+  }
+
+  cancelTrip(): void {
+    this._store.dispatch(TripActions.putTrip({ trip: this.details }));
+    this.alertService.success("Your Trip is Cancelled!! Contact Customer care for further details..");
+    this.ngOnInit();
   }
 }

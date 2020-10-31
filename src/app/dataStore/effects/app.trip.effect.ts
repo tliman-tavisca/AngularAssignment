@@ -38,7 +38,7 @@ export class TripsEffects {
 
     putTrip$ = createEffect(() => this._action$.pipe(
         ofType(TripActions.putTrip),
-        switchMap((param) => this._serv.addTrip(param.trip)),
+        switchMap((param) => this._serv.cancelTrip(param.trip)),
         switchMap((trips: Trip[]) => of(TripActions.putTripSuccess({ trips })))
     ));
 

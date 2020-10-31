@@ -17,6 +17,7 @@ import { fakeBackendProvider } from './infrastructure/fake-backend';
 import { JwtTokenInterceptor } from './infrastructure/jwtToken.interceptor';
 import { ErrorInterceptor } from './infrastructure/error.interceptor';
 import { ProductTypePipe } from './pipes/app.producttypepipe';
+import { StatusPipe } from './pipes/app.statuspipe';
 
 import { ConfirmDialogModule } from './confirm-dialog.module';
 import { FlightComponent } from './components/searchComponent/flight/app.flightsearch.component'
@@ -41,7 +42,8 @@ import { environment } from '../environments/environment.prod';
     AlertComponent,
     ProductTypePipe,
     FlightComponent,
-    FlightResultsComponent
+    FlightResultsComponent,
+    StatusPipe
   ],
   imports: [
     BrowserModule,
