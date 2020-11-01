@@ -58,8 +58,9 @@ export class TripsService {
   }
 
   addTrip(trp: Trip): Observable<Trip[]> {
-    this.getTripsData();
-    this.trips.push(trp);
+    const clone = this.deepCopyFunction(this.trips.slice());
+    clone.push(trp);
+    this.trips = clone;
     return of(this.trips);
   }
 

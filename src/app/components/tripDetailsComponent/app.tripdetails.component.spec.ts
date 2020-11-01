@@ -4,7 +4,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { TripDetailsComponent } from './app.tripdetails.component';
 import { Router } from '@angular/router';
-import { selectTripsList } from './../../selectors/app.trip.selector'
+import { selectTripsList } from './../../dataStore/selectors/app.trip.selector';
 import { Trip } from 'src/app/model/app.trip.model';
 
 const tripMockData = new Array<Trip>();

@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="column"><span class="displayprice-span">Total Cost:
                                                 {{i.DisplayedPrice | currency}}</span><br><br>
-                                            <button class="btn btn-success">Book this Flight</button>
+                                            <button class="btn btn-success" (click)="book(i)">Book this Flight</button>
                                         </div>
                                     </div>
                                 </div>

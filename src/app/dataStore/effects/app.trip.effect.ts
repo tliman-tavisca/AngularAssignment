@@ -18,7 +18,6 @@ export class TripsEffects {
         withLatestFrom(this._store.pipe(select(selectTripsList))), // using the seelctor
         switchMap(([id, trips]) => {
             const selectedTrip = trips.filter(trip => trip.TripId === +id)[0];
-            console.log(`in effect ${id} ${JSON.stringify(selectedTrip)}`);
             return of(TripActions.getTripByIdSuccess({ trip: selectedTrip }));
         })
     ));
