@@ -20,7 +20,7 @@ export class MytripsComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService, private _store: Store<IAppTripState>) {
     this.trip = new Trip(0, '', '', '', '', '', 0, '', '');
-    this.currentUser = this.authenticationService.currentUserValue;
+    this.currentUser = this.authenticationService?.currentUserValue;
   }
 
   ngOnInit(): void {

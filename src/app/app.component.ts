@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './services/app.authentication.service';
 import { User } from './model/app.user.model';
-import './components/app.less';
 
 @Component({ selector: 'app-root', templateUrl: 'app.component.html' })
 export class AppComponent {
@@ -13,7 +12,7 @@ export class AppComponent {
     private router: Router,
     private authenticationService: AuthenticationService
   ) {
-    this.authenticationService.currentUser.subscribe(
+    this.authenticationService?.currentUser?.subscribe(
       (x) => (this.currentUser = x)
     );
   }

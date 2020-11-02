@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !passenger.valid }">
+				<div class="form-group column" [ngClass]="{ 'has-error': f.submitted && !passenger.valid }">
 					<select name="passenger" placeholder="passenger" [(ngModel)]="model.passenger" #passenger="ngModel"
 						class=" inputfield form-control input-lg" required>
 						<option [ngValue]="undefined" disabled selected> Please select Pessanger </option>
@@ -53,10 +53,9 @@
 					<div *ngIf="f.submitted && !passenger.valid" class="alert alert-danger">Departure date is
 						required</div>
 				</div>
-
-			</div>
-			<div class="row">
-				<button class="btn btn-primary searchButton">Search</button>
+				<div class="column">
+					<button class="btn btn-primary searchButton">Search</button>
+				</div>
 			</div>
 		</form>
 	</div>
